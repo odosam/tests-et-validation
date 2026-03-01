@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CreditImmobilier.Modeles
+namespace CreditImmobilier.ClassesMetier
 {
-    public class DemandePret
+    public class DemandeCredit
     {
         public decimal Montant { get; set; }
         public int DureeAnnees { get; set; }

@@ -52,3 +52,4 @@ CodeCoverage/
 *.VisualState.xml
 TestResult.xml
 nunit-*.xml
+/TP2/CreditImmobilier/.vs/CreditImmobilier

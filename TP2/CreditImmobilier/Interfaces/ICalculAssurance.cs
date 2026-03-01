@@ -1,5 +1,5 @@
 ﻿using CreditImmobilier.Enumerations;
-using CreditImmobilier.Modeles;
+using CreditImmobilier.ClassesMetier;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace CreditImmobilier.Interfaces
 {
-    internal interface ICalculAssurance
+    public interface ICalculAssurance
     {
         decimal CalculTotalAssurance(Emprunteur client);
-        decimal CalculMensualiteAssurance(Emprunteur client); // TODO : réflechir comment faire
+        decimal CalculMensualiteAssurance(Emprunteur client, decimal capital); 
     }
 }

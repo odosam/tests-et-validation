@@ -1,4 +1,4 @@
-﻿using CreditImmobilier.Modeles;
+﻿using CreditImmobilier.ClassesMetier;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +9,6 @@ namespace CreditImmobilier.Interfaces
 {
     public interface ICalculTabAmorti
     {
-        ResultatSimulation Simulation(DemandePret demande);
+        ResultatSimulation Simulation(DemandeCredit demande);
     }
 }

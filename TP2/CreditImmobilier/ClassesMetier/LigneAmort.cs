@@ -1,4 +1,4 @@
-﻿namespace CreditImmobilier.Modeles
+﻿namespace CreditImmobilier.ClassesMetier
 {
     public class LigneAmort
     {
