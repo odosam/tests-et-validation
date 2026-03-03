@@ -68,7 +68,6 @@ namespace Tests
 
             decimal mensualiteCalculee = obj.CalculerMensualite(montant, taux, dureeMois);
 
-            // Arrondi au dixieme superieur
             decimal mensualiteAttendue = 0.00m;
 
             Assert.Equal(mensualiteAttendue, mensualiteCalculee, 2);

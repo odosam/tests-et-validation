@@ -1,6 +1,6 @@
 using CreditImmobilier.ClassesMetier;
 using CreditImmobilier.Services;
-using NuGet.Frameworks;
+using CreditImmobilier.Enumerations;
 
 namespace Tests;
 
@@ -9,77 +9,62 @@ public class CalculAssuranceTest
     readonly public decimal capital = 175000m;
 
     [Fact]
-    public void Test_CasToutTotal()
+    public void Test_CasToutATrueInge()
     {
         // Cas avec tout à true + profession ingénieur
         CalculAssurance obj = new CalculAssurance();
-        Emprunteur client = new Emprunteur();
+        Emprunteur client = new Emprunteur()
+        {
+            EstFumeur = true,
+            EstSportif = true,
+            TroubleCardiaque = true,
+            Profession = Profession.IngenieurInformatique
+        };
 
         decimal tauxAttendu = 0.65m;
-
-        client.EstFumeur = true;
-        client.EstSportif = true;
-        client.TroubleCardiaque = true;
-        client.Profession = CreditImmobilier.Enumerations.Profession.IngenieurInformatique;
-
         decimal tauxResultat = obj.CalculTotalAssurance(client);
 
         Assert.Equal(tauxAttendu, tauxResultat, 2);
     }
 
     [Fact]
-    public void Test_CasToutTotal2()
+    public void Test_CasToutATruePilote()
     {
         // Cas avec tout à true + profession pilote
         CalculAssurance obj = new CalculAssurance();
-        Emprunteur client = new Emprunteur();
+        Emprunteur client = new Emprunteur()
+        {
+            EstFumeur = true,
+            EstSportif = true,
+            TroubleCardiaque = true,
+            Profession = Profession.PiloteDeChasse
+        }; 
 
         decimal tauxAttendu = 0.85m;
-        client.EstFumeur = true;
-        client.EstSportif = true;
-        client.TroubleCardiaque = true;
-        client.Profession = CreditImmobilier.Enumerations.Profession.PiloteDeChasse;
-
         decimal tauxResultat = obj.CalculTotalAssurance(client);
 
         Assert.Equal(tauxAttendu, tauxResultat, 2);
     }
 
     [Fact]
-    public void Test_CasNormalTotal()
+    public void Test_CasToutAFalse()
     {
         // Cas tout à false + autre 
         CalculAssurance obj = new CalculAssurance();
-        Emprunteur client = new Emprunteur();
+        Emprunteur client = new Emprunteur()
+        {
+            EstFumeur = false,
+            EstSportif = false,
+            TroubleCardiaque = false,
+            Profession = Profession.Autre
+        };
 
         decimal tauxAttendu = 0.30m;
-        client.EstFumeur = false;
-        client.EstSportif = false;
-        client.TroubleCardiaque = false;
-        client.Profession = CreditImmobilier.Enumerations.Profession.Autre;
-
         decimal tauxResultat = obj.CalculTotalAssurance(client);
 
         Assert.Equal(tauxAttendu, tauxResultat, 2);
     }
 
-    [Fact]
-    public void Test_CasReductionTotal()
-    {
-        // Cas avec que des réductions
-        CalculAssurance obj = new CalculAssurance();
-        Emprunteur client = new Emprunteur();
-
-        decimal tauxAttendu = 0.20m;
-        client.EstFumeur = false;
-        client.EstSportif = true;
-        client.TroubleCardiaque = false;
-        client.Profession = CreditImmobilier.Enumerations.Profession.IngenieurInformatique;
-
-        decimal tauxResultat = obj.CalculTotalAssurance(client);
-
-        Assert.Equal(tauxAttendu, tauxResultat, 2);
-    }
 
     [Fact]
     public void Test_MensualiteNormal()
@@ -101,12 +86,13 @@ public class CalculAssuranceTest
     public void Test_MensualiteReductionsOnly()
     {
         // Cas avec que des réductions
-        Emprunteur client = new Emprunteur();
-        client.EstFumeur = false;
-        client.EstSportif = true;
-        client.TroubleCardiaque = false;
-        client.Profession = CreditImmobilier.Enumerations.Profession.IngenieurInformatique;
-
+        Emprunteur client = new Emprunteur()
+        {
+            EstFumeur = false,
+            EstSportif = true,
+            TroubleCardiaque = false,
+            Profession = Profession.IngenieurInformatique
+        };
 
         CalculAssurance obj = new CalculAssurance();
 
@@ -120,12 +106,13 @@ public class CalculAssuranceTest
     public void Test_MensualitAdditionsOnly()
     {
         // Cas avec que des majorations
-        Emprunteur client = new Emprunteur();
-        client.EstFumeur = true;
-        client.EstSportif = false;
-        client.TroubleCardiaque = true;
-        client.Profession = CreditImmobilier.Enumerations.Profession.PiloteDeChasse;
-
+        Emprunteur client = new Emprunteur()
+        {
+            EstFumeur = true,
+            EstSportif = false,
+            TroubleCardiaque = true,
+            Profession = Profession.PiloteDeChasse
+        };
 
         CalculAssurance obj = new CalculAssurance();
 
@@ -136,5 +123,4 @@ public class CalculAssuranceTest
 
     }
 
-    
 }

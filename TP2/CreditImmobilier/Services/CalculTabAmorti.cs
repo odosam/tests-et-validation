@@ -29,7 +29,7 @@ namespace CreditImmobilier.Services
             // Mensualité sans assurance
             decimal mensualite = _calculMensualite.CalculerMensualite(demande.Montant, tauxAnnuel, demande.DureeMois);
 
-            // Mensualité assurance
+            // Mensualité avec assurance
             decimal cotisationAssurance = _calculAssurance.CalculMensualiteAssurance(demande.Profil, demande.Montant);
 
             // Tableau avec détails 

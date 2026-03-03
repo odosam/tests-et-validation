@@ -6,7 +6,7 @@ using CreditImmobilier.Services;
 // Saisie des données
 Console.WriteLine("=== Simulateur de crédit immobilier ===\n");
 
-Console.Write("Capital emprunté (min 50 000€) : ");
+Console.Write("Capital emprunté (min 50 000E) : ");
 decimal capital = decimal.Parse(Console.ReadLine());
 
 Console.Write("Durée en années (entre 9 et 25) : ");

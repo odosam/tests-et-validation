@@ -12,8 +12,7 @@ namespace CreditImmobilier.ClassesMetier
         public decimal MensualiteAvecAssurance { get; set; }
         public decimal TotalInterets { get; set; } 
         public decimal TotalAssurance { get; set; }
-        public List<LigneAmortissement> TableauAmortissement { get; set; } // Detail pour chaque mensualite
-
+        public List<LigneAmortissement> TableauAmortissement { get; set; } 
 
     }
 }
