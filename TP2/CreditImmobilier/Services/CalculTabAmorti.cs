@@ -33,7 +33,7 @@ namespace CreditImmobilier.Services
             decimal cotisationAssurance = _calculAssurance.CalculMensualiteAssurance(demande.Profil, demande.Montant);
 
             // Tableau avec détails 
-            var tableau = new List<LigneAmort>();
+            var tableau = new List<LigneAmortissement>();
             decimal montantRestant = demande.Montant;
 
             // Cosntruction du tableau pour chaque mois
@@ -44,7 +44,7 @@ namespace CreditImmobilier.Services
                 decimal partCapital = mensualite - partInterets;
                 montantRestant -= partCapital;
 
-                tableau.Add(new LigneAmort
+                tableau.Add(new LigneAmortissement
                 {
                     Mois = i,
                     MensualiteTotale = mensualite,

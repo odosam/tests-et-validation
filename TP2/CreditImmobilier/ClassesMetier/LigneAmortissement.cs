@@ -1,6 +1,6 @@
 ﻿namespace CreditImmobilier.ClassesMetier
 {
-    public class LigneAmort
+    public class LigneAmortissement
     {
         // Permet d'avoir une liste pour chaque mois avec dedans les interets, capital, et ce qui reste à payer
         public int Mois { get; set; }

@@ -80,9 +80,9 @@ var resultat = service.Simulation(demande);
 
 // Affichage des résultats
 Console.WriteLine("\n=== Résultats ===");
+Console.WriteLine($"Mensualité globale         : {resultat.PrixGlobalMensualite:F2}E");
 Console.WriteLine($"Mensualité hors assurance  : {resultat.PrixGlobalMensualite - resultat.MensualiteAvecAssurance:F2}€");
 Console.WriteLine($"Cotisation assurance/mois  : {resultat.MensualiteAvecAssurance:F2}E");
-Console.WriteLine($"Mensualité globale         : {resultat.PrixGlobalMensualite:F2}E");
 Console.WriteLine($"Total des intérêts         : {resultat.TotalInterets:F2}E");
 Console.WriteLine($"Total assurance            : {resultat.TotalAssurance:F2}E");
 
@@ -95,4 +95,11 @@ if (dureeEnAnnees > 10)
     Console.WriteLine($"Capital remboursé après 10 ans : {capitalRembourse:F2}€");
 }
 
+Console.WriteLine("\n=== Tableau d'amortissement ===");
+Console.WriteLine($"{"Mois",-6} {"Mensualité",-12} {"Intérêts",-12} {"Capital",-12} {"Capital restant",-15}");
+Console.WriteLine(new string('-', 57));
 
+foreach (var ligne in resultat.TableauAmortissement)
+{
+    Console.WriteLine($"{ligne.Mois,-6} {ligne.MensualiteTotale,-12:F2} {ligne.Interets,-12:F2} {ligne.PartPayee,-12:F2} {ligne.ResteAPayer,-15:F2}");
+}
